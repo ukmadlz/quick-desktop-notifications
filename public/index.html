@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Notifications</title>
+  </head>
+  <body>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js" ></script>
+    <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
+    <script type="text/javascript">
+      // Enable pusher logging - don't include this in production
+      Pusher.log = function(message) {
+        if (window.console && window.console.log) {
+          window.console.log(message);
+        }
+      };
+
+      var pusher = new Pusher('5bb71a472b314f974632', {
+        encrypted: true
+      });
+      function notifyMe(message) {
+        // Let's check if the browser supports notifications
+        if (!("Notification" in window)) {
+          alert("This browser does not support system notifications");
+        }
+
+        // Let's check whether notification permissions have already been granted
+        else if (Notification.permission === "granted") {
+          console.log('here');
+          // If it's okay let's create a notification
+          var notification = new Notification('Bt.tn Notification', {body: message});
+        }
+
+        // Otherwise, we need to ask the user for permission
+        else if (Notification.permission !== 'denied') {
+          Notification.requestPermission(function (permission) {
+            // If the user accepts, let's create a notification
+            if (permission === "granted") {
+              var notification = new Notification('Bt.tn Notification', {body: message});
+            }
+          });
+        }
+
+        // Finally, if the user has denied notifications and you
+        // want to be respectful there is no need to bother them any more.
+      }
+      var channel = pusher.subscribe('notifications');
+      channel.bind('bttn', function(data) {
+        notifyMe(data.message);
+      });
+    </script>
+  </body>
+</html>

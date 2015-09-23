@@ -1,0 +1,27 @@
+{
+  "name": "quick-desktop-notifications",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ukmadlz/quick-desktop-notifications.git"
+  },
+  "author": "Mike Elsmore <mike.elsmore@uk.ibm.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ukmadlz/quick-desktop-notifications/issues"
+  },
+  "homepage": "https://github.com/ukmadlz/quick-desktop-notifications#readme",
+  "dependencies": {
+    "dotenv": "^1.2.0",
+    "hapi": "^10.0.1",
+    "inert": "^3.0.1",
+    "path": "^0.12.7",
+    "pusher": "^1.0.6"
+  }
+}
