@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "grunt test",
-    "start": "node index.js"
+    "start": "node index.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,8 @@
     "hapi": "^10.0.1",
     "inert": "^3.0.1",
     "path": "^0.12.7",
-    "pusher": "^1.0.6"
-  }
+    "pusher": "^1.0.6",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
